@@ -1,0 +1,42 @@
+:host, .container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.container {
+    mat-spinner {
+        margin: auto;
+    }
+    .weather {
+        margin: 20px auto;
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        .weather-icon {
+            img {
+                margin: auto;
+                display: block;
+            }
+        }
+    }
+
+    .search-container {
+        form {
+            width: fit-content;
+            margin: auto;
+
+            mat-form-field {
+                min-width: 300px;
+            }
+
+            button {
+                color: #ffffff;
+                margin: 0 10px;
+            }
+        }
+    }
+}
