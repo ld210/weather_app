@@ -28,6 +28,7 @@ export interface WeatherObject {
       "all": number;
     },
     "dt": number;
+    "dt_text"?: string;
     "sys": {
       "type": number;
       "id": number;
@@ -40,4 +41,12 @@ export interface WeatherObject {
     "id": number;
     "name": string;
     "cod": number;
+  }
+
+  export interface ForecastObject {
+      city: any;
+      cnt: number;
+      cod: string;
+      list: Partial<WeatherObject>[];
+      message: any;
   }

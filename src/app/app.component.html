@@ -3,7 +3,7 @@
 </mat-toolbar>
 
 <section class="container">
-  <mat-spinner *ngIf="!isLoading"></mat-spinner>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <div class="search-container">
     <form [formGroup]="searchForm" (ngSubmit)="setCity()">
       <mat-form-field>
@@ -12,12 +12,14 @@
       </mat-form-field>
       <button mat-flat-button color="accent" type="submit" [disabled]="searchForm.invalid">Search</button>
     </form>
+    <span class="error" *ngIf="error">{{error.message}}</span>
   </div>
-  <div class="weather" *ngIf="weatherObj">
-    <h2>{{weatherObj.name}}</h2>
-    <h3>{{weatherObj.weather[0].description}}&nbsp;{{weatherObj.main.temp + "°"}}</h3>
-    <div class="weather-icon">
-      <img src="http://openweathermap.org/img/wn/{{weatherObj.weather[0].icon}}@2x.png">
+  <div class="weather" *ngIf="weatherObj && !isLoading">
+    <main-tile [weatherData]="weatherObj"></main-tile>
+  </div>
+  <div class="forecast-container" *ngIf="forecastObj">
+    <div *ngFor="let forecast of forecastObj.list">
+      <forecast-tile [forecastData]="forecast"></forecast-tile>
     </div>
   </div>
 </section>

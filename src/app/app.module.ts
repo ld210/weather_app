@@ -9,10 +9,14 @@ import { PositionService } from './services/position.service';
 import { WeatherService } from './services/weather.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiAuthInterceptor } from './interceptors/api-auth-interceptor.service';
+import { MainTileComponent } from './components/main-tile/main-tile.component';
+import { ForecastTileComponent } from './components/forecast-tile/forecast-tile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainTileComponent,
+    ForecastTileComponent
   ],
   imports: [
     BrowserModule,

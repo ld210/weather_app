@@ -27,5 +27,9 @@ export class QueryOptions implements Query {
       });
       return queryString.substring(0, queryString.length - 1);
     }
+
+    addParam(key: string, value: any): void {
+      this._map.set(key, value);
+    }
   }
   

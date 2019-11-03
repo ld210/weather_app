@@ -18,8 +18,10 @@ export class AppComponent implements OnDestroy {
   title = 'DataImpact Weather App'
   position: Position;
   weatherObj: WeatherObject;
+  forecastObj: WeatherObject;
   searchForm: FormGroup;
   isLoading = true;
+  error: any;
 
   constructor(
     private store: PositionService,
@@ -49,7 +51,8 @@ export class AppComponent implements OnDestroy {
       filter((position: Position) => !!position),
       map((position: Position) => {
         const options = new QueryOptions({lat: position.coords.latitude, lon: position.coords.longitude, units: 'metric'});
-        this.getWeatherByGPS(options);
+        this.getWeather(options);
+        this.getForecast(options);
       })
     ).subscribe();
   }
@@ -60,21 +63,25 @@ export class AppComponent implements OnDestroy {
       filter((city: string) => !!city),
       map((city: string) => {
         const options = new QueryOptions({q: city, units: 'metric'});
-        this.getWeatherByCityName(options);
+        this.getWeather(options);
+        this.getForecast(options);
       })
     ).subscribe();
   }
 
-  getWeatherByGPS(options: QueryOptions): void {
+  getWeather(options: QueryOptions): void {
     this.weather.getWeather(options).pipe(
       catchError((err: any) => {
+        console.log(err);
         this.isLoading = false;
+        this.error = err.error;
         return of();
       })
     ).subscribe((result: WeatherObject) => {
-      console.log(result);
       this.isLoading = false;
       this.weatherObj = result;
+      this.error = null;
+      this.searchForm.get('search').reset();
     });
   }
 
@@ -88,10 +95,16 @@ export class AppComponent implements OnDestroy {
     this.store.setCity(city);
   }
 
-  getWeatherByCityName(options: QueryOptions): void {
-    this.weather.getWeather(options).subscribe((result: WeatherObject) => {
-      this.searchForm.get('search').reset();
-      this.weatherObj = result;
+  getForecast(options: QueryOptions): void {
+    options.addParam('cnt', 5);
+    this.weather.getForecast(options).pipe(
+      catchError((err: any) => {
+        this.isLoading = false;
+        return of();
+      })
+    ).subscribe((result: WeatherObject) => {
+      this.isLoading = false;
+      this.forecastObj = result;
     });
   }
 }

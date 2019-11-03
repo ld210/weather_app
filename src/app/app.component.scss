@@ -11,23 +11,12 @@
     }
     .weather {
         margin: 20px auto;
-
-        h2, h3 {
-            text-align: center;
-        }
-
-        .weather-icon {
-            img {
-                margin: auto;
-                display: block;
-            }
-        }
     }
 
     .search-container {
         form {
             width: fit-content;
-            margin: auto;
+            margin: 20px auto;
 
             mat-form-field {
                 min-width: 300px;
@@ -38,5 +27,18 @@
                 margin: 0 10px;
             }
         }
+        .error {
+            color: #ff5447;
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            padding-top: 10px;
+        }
+    }
+    .forecast-container {
+        display: flex;
+        flex-direction: row;
+        max-width: 600px;
+        margin: 0 auto;
     }
 }

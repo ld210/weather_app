@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherService } from './services/weather.service';
 import { PositionService } from './services/position.service';
 import { of } from 'rxjs';
+import { MainTileComponent } from './components/main-tile/main-tile.component';
+import { ForecastTileComponent } from './components/forecast-tile/forecast-tile.component';
 
 const position: Position = {
   coords: {
@@ -39,7 +41,7 @@ describe('AppComponent', () => {
         RouterTestingModule, MaterialModule, ReactiveFormsModule, HttpClientTestingModule, BrowserAnimationsModule
       ],
       declarations: [
-        AppComponent
+        AppComponent, MainTileComponent, ForecastTileComponent
       ],
       providers: [ WeatherService, { provide: PositionService, useValue: positionServiceStub} ]
     }).compileComponents();
@@ -83,7 +85,7 @@ describe('AppComponent', () => {
   it('should fetch weather data with user input value', async (done: DoneFn) => {
     const fixture = TestBed.createComponent(AppComponent);
     const component = fixture.componentInstance;
-    
+
     component.searchForm.get('search').setValue('Paris');
     component.setCity();
     fixture.detectChanges();
