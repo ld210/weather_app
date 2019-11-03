@@ -5,6 +5,10 @@
     height: 100%;
 }
 
+mat-toolbar {
+    min-height: 64px;
+}
+
 .container {
     mat-spinner {
         margin: auto;
@@ -15,16 +19,21 @@
 
     .search-container {
         form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             width: fit-content;
             margin: 20px auto;
 
             mat-form-field {
                 min-width: 300px;
+                margin-bottom: 10px;
             }
 
             button {
                 color: #ffffff;
-                margin: 0 10px;
+                margin: auto 10px;
+                max-height: 35px;
             }
         }
         .error {
@@ -40,5 +49,7 @@
         flex-direction: row;
         max-width: 600px;
         margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

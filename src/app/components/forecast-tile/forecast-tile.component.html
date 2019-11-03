@@ -1,5 +1,7 @@
-<h4>{{forecastData.main.temp + "°"}}</h4>
-<div class="weather-icon">
-  <img src="http://openweathermap.org/img/wn/{{forecastData.weather[0].icon}}@2x.png">
+<div class="forecast-tile">
+    <h4>{{forecastData.main.temp + "°"}}</h4>
+    <div class="weather-icon">
+      <img src="http://openweathermap.org/img/wn/{{forecastData.weather[0].icon}}@2x.png">
+    </div>
 </div>
 <span>{{forecastData.dt_txt}}</span>

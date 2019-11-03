@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherObject } from '../../domain/weather';
 
 @Component({
@@ -6,12 +6,7 @@ import { WeatherObject } from '../../domain/weather';
   templateUrl: './main-tile.component.html',
   styleUrls: ['./main-tile.component.scss']
 })
-export class MainTileComponent implements OnInit {
+export class MainTileComponent {
   data: WeatherObject;
   @Input() weatherData: WeatherObject;
-
-  constructor() { }
-
-  ngOnInit() { }
-
 }

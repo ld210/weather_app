@@ -72,7 +72,6 @@ export class AppComponent implements OnDestroy {
   getWeather(options: QueryOptions): void {
     this.weather.getWeather(options).pipe(
       catchError((err: any) => {
-        console.log(err);
         this.isLoading = false;
         this.error = err.error;
         return of();

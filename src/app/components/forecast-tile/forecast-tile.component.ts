@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherObject } from 'src/app/domain/weather';
 
 @Component({
@@ -6,12 +6,6 @@ import { WeatherObject } from 'src/app/domain/weather';
   templateUrl: './forecast-tile.component.html',
   styleUrls: ['./forecast-tile.component.scss']
 })
-export class ForecastTileComponent implements OnInit {
+export class ForecastTileComponent {
   @Input() forecastData: Partial<WeatherObject>;
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.forecastData);
-  }
-
 }
